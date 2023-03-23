@@ -1,0 +1,59 @@
+{
+  "name": "@infomaximum/utility",
+  "version": "7.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "typings": "./dist/index.d.ts",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Infomaximum Frontend Team",
+    "url": "https://infomaximum.com"
+  },
+  "files": [
+    "dist/",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@infomaximum/assert": "^1.0.0",
+    "@infomaximum/localization": "^1.0.1",
+    "@infomaximum/graphql-model": "^1.2.0",
+    "@types/hoist-non-react-statics": "3.3.1",
+    "crypto-js": "4.1.1",
+    "graphql": "^16.3.0",
+    "graphql-tag": "^2.12.6",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.2",
+    "reselect": "^4.1.7",
+    "universal-cookie": "^4.0.4"
+  },
+  "devDependencies": {
+    "@infomaximum/config": "^2.0.0",
+    "@optimize-lodash/rollup-plugin": "4.0.3",
+    "@rollup/plugin-commonjs": "24.0.1",
+    "@rollup/plugin-node-resolve": "15.0.1",
+    "@rollup/plugin-typescript": "11.0.0",
+    "@types/crypto-js": "4.1.1",
+    "@types/jest": "29.2.6",
+    "@types/lodash": "4.14.182",
+    "@types/webpack-env": "1.18.0",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.0",
+    "jira-prepare-commit-msg": "1.7.2",
+    "prettier": "2.8.6",
+    "rollup": "3.20.0",
+    "standard-version": "9.5.0",
+    "tslib": "^2.4.1",
+    "typescript": "5.0.2"
+  },
+  "scripts": {
+    "release": "tsc --noEmit && standard-version && rollup -c",
+    "build": "rollup -c",
+    "test": "cross-env NODE_ENV=test jest --passWithNoTests",
+    "lint": "tsc --noEmit",
+    "prettier": "prettier --find-config-path --write ./src",
+    "prepare": "husky install"
+  },
+  "jira-prepare-commit-msg": {
+    "messagePattern": "$M\n[$J]"
+  }
+}
