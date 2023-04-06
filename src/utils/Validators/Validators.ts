@@ -9,6 +9,7 @@ import type {
 } from "@infomaximum/localization";
 import { SecondsPerHour, SecondsPerMinute } from "../../const";
 import { TestIdsUtils } from "../../const/TestIds";
+import { Model } from "@infomaximum/graphql-model";
 
 type FieldValidator<FieldValue> = (
   value: FieldValue,
@@ -108,7 +109,7 @@ const notEmpty: TFieldValidatorSelector =
     value === null ||
     value === undefined ||
     (Array.isArray(value) && value.length === 0) ||
-    (isObject(value) && isEmpty(value)) ||
+    (isObject(value) && isEmpty(value) && !(value instanceof Model)) ||
     (typeof value === "string" && value.trim() === "")
       ? error
       : undefined;
