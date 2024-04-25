@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs, { type Dayjs } from "dayjs";
 import round from "lodash/round";
 import padStart from "lodash/padStart";
 import pad from "lodash/pad";
@@ -84,47 +84,47 @@ export type TTimeString = string;
 
 export const DateFormats = {
   SHORT: {
-    moment: "D dd", // 9 ср
+    format: "D dd", // 9 ср
     excel: "ddd\\,\\ dd",
   },
   DOW: {
-    moment: "dd", // Ср
+    format: "dd", // Ср
   },
   DOW_MIDDLE: {
-    moment: "dd, D MMM", // Ср, 9 авг
+    format: "dd, D MMM", // Ср, 9 авг
   },
   DOW_LONG: {
-    moment: "dddd", // Среда
+    format: "dddd", // Среда
   },
   LONG: {
-    moment: "D MMMM YYYY", // 9 августа 2016
+    format: "D MMMM YYYY", // 9 августа 2016
   },
   DAY: {
-    moment: "D", // 9
+    format: "D", // 9
   },
   DAY_MONTH: {
-    moment: "D MMMM", // 9 августа
+    format: "D MMMM", // 9 августа
   },
   MONTH_MIDDLE: {
-    func: (time: number) => moment.utc(time).format("MMM").substr(0, 3), // авг
+    func: (time: number) => dayjs.utc(time).format("MMM").substr(0, 3), // авг
   },
   MONTH_YEAR: {
-    moment: "MMMM YYYY", // Август 2016
+    format: "MMMM YYYY", // Август 2016
   },
   MONTH: {
-    moment: "MMMM",
+    format: "MMMM",
   },
   YEAR: {
-    moment: "YYYY", // 2016
+    format: "YYYY", // 2016
   },
   HOUR_MINUTES_LONG: {
-    moment: "h:mm / D MMMM YYYY",
+    format: "h:mm / D MMMM YYYY",
   },
   FULL_HOUR_MINUTES_LONG: {
-    moment: "HH:mm / D MMMM YYYY",
+    format: "HH:mm / D MMMM YYYY",
   },
   DAY_MONTH_YEAR_SHORT: {
-    moment: "DD.MM.YYYY",
+    format: "DD.MM.YYYY",
   },
 };
 
@@ -137,21 +137,21 @@ export const DateFormats = {
  * @returns {string} - количество часов
  */
 export const getConvertedMsToHours = (time: number, precision: number) =>
-  moment.duration(time, "ms").asHours().toFixed(precision);
+  dayjs.duration(time, "ms").asHours().toFixed(precision);
 
 /**
  * Возвращает период дат
- * @param {Moment} dateFrom - начальная дата
- * @param {Moment} dateTo - конечная дата
+ * @param {Dayjs} dateFrom - начальная дата
+ * @param {Dayjs} dateTo - конечная дата
  * @param {?string} dateFormat - конечная дата
  * @example <caption>Пример использования getCollapsedDateRangeLabel</caption>
  * //returns 20 12 23 - 20 12 24
- * getCollapsedDateRangeLabel(moment.utc(1608729945950),moment.utc(1608816345950),"YY MM DD")
+ * getCollapsedDateRangeLabel(dayjs.utc(1608729945950),dayjs.utc(1608816345950),"YY MM DD")
  * @returns {string}
  */
 export const getCollapsedDateRangeLabel = (
-  dateFrom: moment.Moment,
-  dateTo: moment.Moment,
+  dateFrom: Dayjs,
+  dateTo: Dayjs,
   dateFormat: string = "D MMMM YYYY"
 ) => {
   const dateFromFormattedArray: string[] = dateFrom
@@ -211,22 +211,22 @@ export const formatEnteredTime = (value: string) => {
  * @returns {string}
  */
 export const getLocalizedHours = (ms: number, localization: Localization) => {
-  const hours = moment.duration(ms).asHours();
+  const hours = dayjs.duration(ms).asHours();
 
   return `${round(hours, 2)} ${localization.getLocalized(HOURS_ABBREVIATION)}`;
 };
 
 /**
  * возвращает объект с данными для сервера
- * @param {Moment | Duration} time
+ * @param {Dayjs | Duration} time
  * @param {Boolean} isMonthEnum - преобразовывать значение месяца в Enum, нужно для отправки мутаций через GraphQlQuery
  */
-export const momentToServerObject = (
-  time: moment.Moment | moment.Duration | undefined,
+export const dayjsToServerObject = (
+  time: Dayjs | plugin.Duration | undefined,
   isMonthEnum: boolean = false
 ) => {
   if (time) {
-    if (moment.isDuration(time)) {
+    if (dayjs.isDuration(time)) {
       return {
         time: {
           hour: time.hours(),
@@ -262,7 +262,7 @@ export const utcTimestampToServerObject = (
   isMonthEnum: boolean = false
 ) =>
   isNumber(utcTimestamp)
-    ? momentToServerObject(moment.unix(utcTimestamp).utc(), isMonthEnum)
+    ? dayjsToServerObject(dayjs.unix(utcTimestamp).utc(), isMonthEnum)
     : null;
 
 /**
@@ -272,42 +272,40 @@ export const utcTimestampToServerObject = (
  * @returns {object | undefined}
  */
 export const getDateServerObject = (
-  date: moment.Moment,
+  date: Dayjs,
   isMonthEnum: boolean = false
-) => momentToServerObject(date, isMonthEnum)?.date;
+) => dayjsToServerObject(date, isMonthEnum)?.date;
 
 /**
  * возвращает объект с данными(время) для сервера
- * @param {Moment} date
+ * @param {Dayjs} date
  * @returns {object | undefined}
  */
-export const getTimeServerObject = (date: moment.Moment | moment.Duration) =>
-  momentToServerObject(date)?.time;
+export const getTimeServerObject = (date: Dayjs | plugin.Duration) =>
+  dayjsToServerObject(date)?.time;
 
 /**
  * возвращает объект с данными(дату и смещение часового пояса) для сервера
- * @param {Moment} date
+ * @param {Dayjs} date
  * @param {Boolean} isMonthEnum - преобразовывать значение месяца в Enum
  * @returns {object}
  */
 export const getLocalDateServerObject = (
-  date: moment.Moment,
+  date: Dayjs,
   isMonthEnum: boolean = false
 ) => ({
-  local_date: momentToServerObject(date, isMonthEnum)?.date,
+  local_date: dayjsToServerObject(date, isMonthEnum)?.date,
   offset: getUtcOffset(),
 });
 
 /**
  * возвращает объект с данными(время и смещение часового пояса) для сервера
- * @param {Moment} date
+ * @param {Dayjs} date
  * @param {Boolean} isMonthEnum - преобразовывать значение месяца в Enum
  * @returns {object}
  */
-export const getLocalTimeServerObject = (
-  date: moment.Moment | moment.Duration
-) => ({
-  local_time: momentToServerObject(date)?.time,
+export const getLocalTimeServerObject = (date: Dayjs | plugin.Duration) => ({
+  local_time: dayjsToServerObject(date)?.time,
   offset: getUtcOffset(),
 });
 
@@ -318,7 +316,7 @@ export const getLocalTimeServerObject = (
  * @returns {object}
  */
 export const getLocalDateTimeServerObject = (
-  date: moment.Moment,
+  date: Dayjs,
   isMonthEnum: boolean = false
 ) => ({
   ...getLocalDateServerObject(date, isMonthEnum),
@@ -329,7 +327,7 @@ export const getLocalDateTimeServerObject = (
  * возвращает смещение часового пояса в миллисекундах
  * @returns {number}
  */
-export const getUtcOffset = () => moment().utcOffset() * 60000;
+export const getUtcOffset = () => dayjs().utcOffset() * 60000;
 
 /**
  *	Форматирует дату
@@ -338,7 +336,7 @@ export const getUtcOffset = () => moment().utcOffset() * 60000;
  * @returns {string}
  */
 export const getFormattedDate = (time: number, format: string | undefined) =>
-  capitalize(moment.utc(time).format(format));
+  capitalize(dayjs.utc(time).format(format));
 
 /**
  * возвращает дату в заданном формате
@@ -357,8 +355,8 @@ export const format = (time: number, format: keyof typeof DateFormats) => {
     return dateFormat.func(time);
   }
 
-  if (dateFormat && "moment" in dateFormat) {
-    return getFormattedDate(time, dateFormat.moment);
+  if (dateFormat && "format" in dateFormat) {
+    return getFormattedDate(time, dateFormat.format);
   }
 
   return getFormattedDate(time, undefined);
@@ -376,8 +374,8 @@ export const excelFormat = (format: keyof typeof DateFormats) => {
     return dateFormat.excel;
   }
 
-  if (dateFormat && "moment" in dateFormat) {
-    return dateFormat.moment;
+  if (dateFormat && "format" in dateFormat) {
+    return dateFormat.format;
   }
 
   return undefined;
@@ -405,7 +403,7 @@ export const getFormattedTime = function (
   asHours?: boolean,
   seconds?: boolean
 ): string {
-  const date = moment.duration(time);
+  const date = dayjs.duration(time);
 
   return `${padStart(
     String(Math.floor(asHours ? date.asHours() : date.hours())),
@@ -471,7 +469,7 @@ export const getDurationTime = function (
   time: number,
   localization: Localization
 ) {
-  const leftTime = moment.duration(time);
+  const leftTime = dayjs.duration(time);
   const yearsCount = leftTime.years();
 
   if (yearsCount > 0) {
@@ -529,13 +527,13 @@ export const getDayTime = function (milliseconds: number): number {
     return -1;
   }
 
-  const timeMoment = moment.utc(milliseconds);
+  const timeDayjs = dayjs.utc(milliseconds);
 
-  const duration = moment
+  const duration = dayjs
     .duration({
-      hours: timeMoment.hours(),
-      minutes: timeMoment.minutes(),
-      seconds: timeMoment.seconds(),
+      hours: timeDayjs.hour(),
+      minutes: timeDayjs.minute(),
+      seconds: timeDayjs.second(),
     })
     .valueOf() as number;
 
@@ -739,7 +737,7 @@ export const ShortFormatConditions = {
  */
 
 export const getDurationDescription = function (milliseconds: number) {
-  const duration = moment.duration(milliseconds, "milliseconds");
+  const duration = dayjs.duration(milliseconds, "milliseconds");
 
   return {
     hours: Math.floor(duration.asHours()),
@@ -764,12 +762,20 @@ export const getDurationInHours = function (milliseconds: number): string {
 
 /**
  *	Возвращает объект moment с началом дня
- * @param {moment} momentDate
- * @returns {moment}
+ * @param {Dayjs} date
+ * @returns {Dayjs}
  * @static
  */
-export const getUTCStartOfDay = function (momentDate: moment.Moment) {
-  return moment.utc([momentDate.year(), momentDate.month(), momentDate.date()]);
+export const getUTCStartOfDay = function (date: Dayjs) {
+  return dayjs.utc(
+    dayjs()
+      .set("year", date.year())
+      .set("month", date.month())
+      .set("date", date.date())
+      .set("hour", 0)
+      .set("minute", 0)
+      .set("second", 0)
+  );
 };
 
 // ----------------------------------- utilities -----------------------------
@@ -810,7 +816,7 @@ export const roundToMinutes = function (milliseconds: number): number {
  * @static
  */
 export const getTimeZone = function () {
-  return -moment().zone() * SecondsPerMinute;
+  return -dayjs().utcOffset() * SecondsPerMinute;
 };
 
 /**

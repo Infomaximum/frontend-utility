@@ -21,7 +21,7 @@ import Feature from "./services/Feature";
 import userAgent from "./utils/userAgent";
 import ErrorHandling from "./services/ErrorHandling";
 import { formatTime } from "./utils/Format/Format";
-import { momentLocaleUpdate } from "./utils/moment";
+import { localeUpdate } from "./utils/dayjs";
 import type {
   IDocumentNode,
   TInferredVariables,
@@ -53,7 +53,7 @@ export {
   userAgent,
   EnumValue,
   formatTime,
-  momentLocaleUpdate,
+  localeUpdate,
   graphqlTag,
   TestIdsUtils,
 };

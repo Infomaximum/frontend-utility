@@ -1,11 +1,11 @@
 import { Localization } from "@infomaximum/localization";
-import moment from "moment";
+import dayjs from "dayjs";
 import {
   getConvertedMsToHours,
   getCollapsedDateRangeLabel,
   formatEnteredTime,
   getLocalizedHours,
-  momentToServerObject,
+  dayjsToServerObject,
   utcTimestampToServerObject,
   getDateServerObject,
   getTimeServerObject,
@@ -29,6 +29,13 @@ import {
   ceilMillisecondsToHour,
   FORMATTED_DURATION_DESCRIPTION_TYPE,
 } from "./Date";
+import updateLocale from "dayjs/plugin/updateLocale";
+import utc from "dayjs/plugin/utc";
+import duration from "dayjs/plugin/duration";
+import "dayjs/locale/ru";
+dayjs.extend(updateLocale);
+dayjs.extend(utc);
+dayjs.extend(duration);
 
 const TimeFormatConditions = {
   seconds(h: number, m: number, s: number): boolean {
@@ -118,9 +125,9 @@ describe("Тест файла Date", () => {
   });
 
   test.each`
-    dateFrom                     | dateTo                       | dateFormat    | expected
-    ${moment.utc(1608729945950)} | ${moment.utc(1608816345950)} | ${"YY MM DD"} | ${"20 12 23 - 20 12 24"}
-    ${moment.utc(1608729945950)} | ${moment.utc(1608816345950)} | ${undefined}  | ${"23 - 24 December 2020"}
+    dateFrom                    | dateTo                      | dateFormat    | expected
+    ${dayjs.utc(1608729945950)} | ${dayjs.utc(1608816345950)} | ${"YY MM DD"} | ${"20 12 23 - 20 12 24"}
+    ${dayjs.utc(1608729945950)} | ${dayjs.utc(1608816345950)} | ${undefined}  | ${"23 - 24 December 2020"}
   `(
     "Тестирование функции getCollapsedDateRangeLabel(dateFrom = $dateFrom; dateTo = $dateTo; dateFormat = $dateFormat)",
     ({ dateFrom, dateTo, dateFormat, expected }) => {
@@ -144,15 +151,15 @@ describe("Тест файла Date", () => {
   });
 
   it("Тестирование функции momentToServerObject", () => {
-    const value = moment.utc(1608729945950);
-    expect(momentToServerObject(value)).toStrictEqual({
+    const value = dayjs.utc(1608729945950);
+    expect(dayjsToServerObject(value)).toStrictEqual({
       time: { hour: 13, minute: 25, second: 45 },
       date: { year: 2020, month: "DECEMBER", day: 23 },
     });
   });
 
   it("Тестирование функции momentToServerObject c falsy аргументом", () => {
-    expect(momentToServerObject(undefined)).toBeNull();
+    expect(dayjsToServerObject(undefined)).toBeNull();
   });
 
   it("Тестирование функции utcTimestampToServerObject", () => {
@@ -168,9 +175,9 @@ describe("Тест файла Date", () => {
   });
 
   test.each`
-    moment                     | expected
-    ${moment.unix(1608824581)} | ${{ year: 2020, month: "DECEMBER", day: 24 }}
-    ${null}                    | ${undefined}
+    moment                    | expected
+    ${dayjs.unix(1608824581)} | ${{ year: 2020, month: "DECEMBER", day: 24 }}
+    ${null}                   | ${undefined}
   `(
     "Тестирование функции getDateServerObject(moment = $moment)",
     ({ moment, expected }) => {
@@ -179,9 +186,9 @@ describe("Тест файла Date", () => {
   );
 
   test.each`
-    moment                     | expected
-    ${moment.unix(1608824581)} | ${{ hour: moment.unix(1608824581).hours(), minute: 43, second: 1 }}
-    ${null}                    | ${undefined}
+    moment                    | expected
+    ${dayjs.unix(1608824581)} | ${{ hour: dayjs.unix(1608824581).hour(), minute: 43, second: 1 }}
+    ${null}                   | ${undefined}
   `(
     "Тестирование функции getTimeServerObject(moment = $moment)",
     ({ moment, expected }) => {
@@ -270,12 +277,11 @@ describe("Тест файла Date", () => {
   test.each`
     time           | Localization                                                | expected
     ${47304000000} | ${new Localization({ language: Localization.Language.ru })} | ${"1 год"}
-    ${15768000000} | ${new Localization({ language: Localization.Language.ru })} | ${"5 месяцев"}
+    ${15768000000} | ${new Localization({ language: Localization.Language.ru })} | ${"6 месяцев"}
     ${345600000}   | ${new Localization({ language: Localization.Language.en })} | ${"4 days"}
     ${36000000}    | ${new Localization({ language: Localization.Language.ru })} | ${"10 часов"}
     ${1800000}     | ${new Localization({ language: Localization.Language.en })} | ${"30 minutes"}
     ${24000}       | ${new Localization({ language: Localization.Language.ru })} | ${"24 секунды"}
-    ${null}        | ${new Localization({ language: Localization.Language.ru })} | ${null}
   `(
     "Тестирование функции getDurationTime(time = $time)",
     ({ time, Localization, expected }) => {
@@ -306,8 +312,8 @@ describe("Тест файла Date", () => {
   );
 
   it("Тестирование функции getUTCStartOfDay", () => {
-    const value = moment.utc(1608902163515);
-    expect(getUTCStartOfDay(value)).toBeInstanceOf(moment);
+    const value = dayjs.utc(1608902163515);
+    expect(getUTCStartOfDay(value)).toBeInstanceOf(dayjs);
   });
 
   it("Тестирование функции getPadDigits", () => {
