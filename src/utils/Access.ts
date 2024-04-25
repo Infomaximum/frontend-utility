@@ -21,7 +21,7 @@ export interface IFeatureAdditionalProps {
 
 export type TFeatureEnabledChecker = <T extends IFeatureAdditionalProps>(
   key: string,
-  additionalProps?: T
+  additionalProps?: T,
 ) => boolean;
 
 export type TAccess = {
@@ -55,7 +55,7 @@ const featureAdditionalProps: {
 export const getAccessParameters = (
   isFeatureEnabled?: TFeatureEnabledChecker,
   accessKeys?: string[],
-  someAccessKeys?: string[]
+  someAccessKeys?: string[],
 ): TAccess => {
   const initialAccess: TAccess = {
     hasReadAccess: true,
@@ -82,7 +82,7 @@ export const getAccessParameters = (
         ? access
         : { ...access, [additionalPropsKey]: false };
     },
-    initialAccess
+    initialAccess,
   );
 };
 

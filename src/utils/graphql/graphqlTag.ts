@@ -8,7 +8,7 @@ export interface IDocumentNode<_Variables extends TDictionary = never>
 
 export type TInferredVariables<
   T extends { [P in K]: IDocumentNode<TDictionary> },
-  K extends keyof T
+  K extends keyof T,
 > = Pick<T, K> extends IDocumentNode<infer V> ? V : TDictionary;
 
 export const graphqlTag = <Variables extends TDictionary = never>(

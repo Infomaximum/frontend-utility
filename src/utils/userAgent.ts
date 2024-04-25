@@ -9,7 +9,7 @@ const edge = /Edge\//.test(window.navigator.userAgent);
 const webkit = /AppleWeb[kK]it/.test(window.navigator.userAgent);
 
 const safari = /^((?!chrome|android).)*safari/i.test(
-  window.navigator.userAgent
+  window.navigator.userAgent,
 );
 
 const userAgent = (): string | undefined => {

@@ -152,7 +152,7 @@ export const getConvertedMsToHours = (time: number, precision: number) =>
 export const getCollapsedDateRangeLabel = (
   dateFrom: Dayjs,
   dateTo: Dayjs,
-  dateFormat: string = "D MMMM YYYY"
+  dateFormat: string = "D MMMM YYYY",
 ) => {
   const dateFromFormattedArray: string[] = dateFrom
     .format(dateFormat)
@@ -172,7 +172,7 @@ export const getCollapsedDateRangeLabel = (
   const divider = uniqueDateFromFormattedArray.length === 0 ? "" : " - ";
 
   return `${uniqueDateFromFormattedArray.join(
-    " "
+    " ",
   )}${divider}${dateToFormattedArray.join(" ")}`;
 };
 
@@ -223,7 +223,7 @@ export const getLocalizedHours = (ms: number, localization: Localization) => {
  */
 export const dayjsToServerObject = (
   time: Dayjs | plugin.Duration | undefined,
-  isMonthEnum: boolean = false
+  isMonthEnum: boolean = false,
 ) => {
   if (time) {
     if (dayjs.isDuration(time)) {
@@ -259,7 +259,7 @@ export const dayjsToServerObject = (
  */
 export const utcTimestampToServerObject = (
   utcTimestamp: number | null,
-  isMonthEnum: boolean = false
+  isMonthEnum: boolean = false,
 ) =>
   isNumber(utcTimestamp)
     ? dayjsToServerObject(dayjs.unix(utcTimestamp).utc(), isMonthEnum)
@@ -273,7 +273,7 @@ export const utcTimestampToServerObject = (
  */
 export const getDateServerObject = (
   date: Dayjs,
-  isMonthEnum: boolean = false
+  isMonthEnum: boolean = false,
 ) => dayjsToServerObject(date, isMonthEnum)?.date;
 
 /**
@@ -292,7 +292,7 @@ export const getTimeServerObject = (date: Dayjs | plugin.Duration) =>
  */
 export const getLocalDateServerObject = (
   date: Dayjs,
-  isMonthEnum: boolean = false
+  isMonthEnum: boolean = false,
 ) => ({
   local_date: dayjsToServerObject(date, isMonthEnum)?.date,
   offset: getUtcOffset(),
@@ -317,7 +317,7 @@ export const getLocalTimeServerObject = (date: Dayjs | plugin.Duration) => ({
  */
 export const getLocalDateTimeServerObject = (
   date: Dayjs,
-  isMonthEnum: boolean = false
+  isMonthEnum: boolean = false,
 ) => ({
   ...getLocalDateServerObject(date, isMonthEnum),
   ...getLocalTimeServerObject(date),
@@ -401,14 +401,14 @@ export const capitalizedShortFormat = function (time: number) {
 export const getFormattedTime = function (
   time: number,
   asHours?: boolean,
-  seconds?: boolean
+  seconds?: boolean,
 ): string {
   const date = dayjs.duration(time);
 
   return `${padStart(
     String(Math.floor(asHours ? date.asHours() : date.hours())),
     2,
-    "0"
+    "0",
   )}:${padStart(String(date.minutes()), 2, "0")}${
     seconds ? `:${padStart(String(date.seconds()), 2, "0")}` : ""
   }`;
@@ -425,7 +425,7 @@ export const getFormattedTime = function (
 export const getSignFormattedTime = function (
   time: number,
   asHours: boolean,
-  seconds: boolean
+  seconds: boolean,
 ) {
   let sign = "";
   let _time = time;
@@ -467,7 +467,7 @@ export const getDateTimeClockTime = function (time: number): string {
  */
 export const getDurationTime = function (
   time: number,
-  localization: Localization
+  localization: Localization,
 ) {
   const leftTime = dayjs.duration(time);
   const yearsCount = leftTime.years();
@@ -618,7 +618,7 @@ export const getFormattedDuration = function ({
       splitWithDelimiters(
         pad(String(Math.round(hours / 1000)), padDigits(), "0"),
         3,
-        " "
+        " ",
       ) + localization.getLocalized(THOUSAND_HOURS_SHORT);
   } else {
     string =
@@ -626,36 +626,36 @@ export const getFormattedDuration = function ({
         ? `${splitWithDelimiters(
             pad(String(hours), padDigits(), "0"),
             3,
-            " "
+            " ",
           )} ${localization.getLocalized(
             descriptionLocalizations[descriptionType].hours,
             {
               count: hours,
-            }
+            },
           )}`
         : "") +
       (writeMinutes
         ? ` ${padStart(
             String(minutes),
             padDigits(),
-            "0"
+            "0",
           )} ${localization.getLocalized(
             descriptionLocalizations[descriptionType].minutes,
             {
               count: minutes,
-            }
+            },
           )}`
         : "") +
       (writeSeconds
         ? ` ${padStart(
             String(seconds),
             padDigits(),
-            "0"
+            "0",
           )} ${localization.getLocalized(
             descriptionLocalizations[descriptionType].seconds,
             {
               count: seconds,
-            }
+            },
           )}`
         : "");
   }
@@ -774,7 +774,7 @@ export const getUTCStartOfDay = function (date: Dayjs) {
       .set("date", date.date())
       .set("hour", 0)
       .set("minute", 0)
-      .set("second", 0)
+      .set("second", 0),
   );
 };
 

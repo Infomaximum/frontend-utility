@@ -32,7 +32,7 @@ export type TFeatureDescription = {
 export type TFeatureChecker<P, A> = (
   key: string,
   props: P,
-  additionalProps: A
+  additionalProps: A,
 ) => boolean;
 
 /**
@@ -47,7 +47,7 @@ export type TFeatureCacheKeyCreator<A> = (additionalProps: A) => string;
  */
 class Feature<
   P extends TDictionary = TDictionary<unknown>,
-  A extends TDictionary = TDictionary<unknown>
+  A extends TDictionary = TDictionary<unknown>,
 > {
   protected features: TDictionary<TFeatureChecker<P, A>> = {};
   protected defaultChecker: TFeatureChecker<P, A>;
@@ -57,7 +57,7 @@ class Feature<
 
   constructor(
     defaultChecker: TFeatureChecker<P, A>,
-    cacheKeyCreator: TFeatureCacheKeyCreator<A>
+    cacheKeyCreator: TFeatureCacheKeyCreator<A>,
   ) {
     this.defaultChecker = defaultChecker;
     this.cacheKeyCreator = cacheKeyCreator;

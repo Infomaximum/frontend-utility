@@ -16,7 +16,7 @@ export const safeParseInt = (str: string): number => {
 export const splitWithDelimiters = (
   str: string,
   count: number,
-  delimiter: string
+  delimiter: string,
 ): string => {
   const newStr = str.toString();
 

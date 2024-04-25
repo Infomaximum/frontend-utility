@@ -18,8 +18,8 @@ export type TRemoveIndex<T> = {
   [P in keyof T as string extends P
     ? never
     : number extends P
-    ? never
-    : P]: T[P];
+      ? never
+      : P]: T[P];
 };
 
 // eslint-disable-next-line im/naming-interfaces-and-types

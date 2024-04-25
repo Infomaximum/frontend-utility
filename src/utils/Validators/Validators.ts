@@ -14,7 +14,7 @@ import { Model } from "@infomaximum/graphql-model";
 type FieldValidator<FieldValue> = (
   value: FieldValue,
   allValues: object,
-  meta?: any
+  meta?: any,
 ) => any | Promise<any>;
 
 export type TValidationError = {
@@ -39,7 +39,7 @@ const isValidEmailLoc = ENTER_CORRECT_EMAIL;
  * @returns error | undefined
  */
 export const alternatelyValidators = (
-  validators: FieldValidator<any>[]
+  validators: FieldValidator<any>[],
 ): FieldValidator<any> => {
   return (value, allValues, meta) => {
     for (let i = 0; i < validators.length; i++) {
@@ -69,10 +69,10 @@ export const combineValidators = (validators: TFieldValidatorSelector[]) =>
       locale: Localization,
       arg1?: any,
       arg2?: any,
-      arg3?: any
+      arg3?: any,
     ): FieldValidator<any> => {
       const localizedValidators = validators?.map((validator) =>
-        validator(locale, arg1, arg2, arg3)
+        validator(locale, arg1, arg2, arg3),
       );
 
       return (value, allValues, meta) => {
@@ -101,7 +101,7 @@ export const combineValidators = (validators: TFieldValidatorSelector[]) =>
         }
         return undefined;
       };
-    }
+    },
   );
 
 const notEmpty: TFieldValidatorSelector =
@@ -134,7 +134,7 @@ export const notEmptyMemoize = createSelector(
     notEmpty({
       message,
       code: TestIdsUtils.FIELD_EMPTY,
-    })
+    }),
 );
 
 /**
@@ -152,7 +152,7 @@ export const notEmptyMemoizeWithCustomMessage = createSelector(
     notEmpty({
       message: local.getLocalized(customMessageLoc),
       code: TestIdsUtils.FIELD_EMPTY,
-    })
+    }),
 );
 
 const isValidEmail: TFieldValidatorSelector =
@@ -176,7 +176,7 @@ export const isValidEmailMemoize = createSelector(
       message,
       code: TestIdsUtils.ENTER_CORRECT_EMAIL,
     });
-  }
+  },
 );
 
 /**
@@ -223,8 +223,7 @@ export const isValidTimepickersWithoutMessage = isValidTimepickers({
 });
 
 const isValidNumber: TFieldValidatorSelector =
-  (error: TValidationError) => (value) =>
-    isNaN(value) ? error : undefined;
+  (error: TValidationError) => (value) => (isNaN(value) ? error : undefined);
 
 /**
  * Валидатор проверяющий на валидность введенного числа

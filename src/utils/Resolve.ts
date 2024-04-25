@@ -12,7 +12,7 @@ import { Model } from "@infomaximum/graphql-model";
  * экспортируется именованным экспортом и по умолчанию, то эта модель в массив попадет только один раз
  */
 export const requireAllModels = (
-  requireContext: __WebpackModuleApi.RequireContext
+  requireContext: __WebpackModuleApi.RequireContext,
 ) => {
   const models = reduce(
     requireContext.keys().map(requireContext),
@@ -25,7 +25,7 @@ export const requireAllModels = (
 
       return acc;
     },
-    new Set<typeof Model>()
+    new Set<typeof Model>(),
   );
 
   return Array.from(models.values());
@@ -44,12 +44,12 @@ export const requireAllModels = (
  */
 export const requireAll = (
   requireContext: __WebpackModuleApi.RequireContext,
-  path?: string
+  path?: string,
 ) => {
   return reduce(
     requireContext.keys().map(requireContext),
     (acc, exports) => merge(acc, getExportValues(exports, path)),
-    {}
+    {},
   );
 };
 
@@ -65,7 +65,7 @@ let requireUniqueId = 0;
  */
 export const requireAllUnique = (
   requireContext: __WebpackModuleApi.RequireContext,
-  path?: string
+  path?: string,
 ) => {
   return reduce(
     requireContext.keys().map(requireContext),
@@ -75,9 +75,9 @@ export const requireAllUnique = (
         mapKeys(getExportValues(exports, path), (value, key) => {
           requireUniqueId += 1;
           return `${key}?${requireUniqueId}`;
-        })
+        }),
       ),
-    {}
+    {},
   );
 };
 

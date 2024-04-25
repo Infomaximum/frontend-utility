@@ -14,7 +14,7 @@ dayjs.extend(duration);
  */
 export const localeUpdate = function (
   locale: string,
-  firstDayOfTheWeek: number
+  firstDayOfTheWeek: number,
 ) {
   dayjs.locale(locale);
   dayjs.updateLocale(locale, {

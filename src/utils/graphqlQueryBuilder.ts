@@ -40,7 +40,7 @@ export class GraphQlQuery {
 
   constructor(
     fnName: string | gql.IAlias,
-    argumentsMap: gql.IArgumentsMap = {}
+    argumentsMap: gql.IArgumentsMap = {},
   ) {
     this.head =
       typeof fnName === "string"
@@ -75,7 +75,7 @@ export class GraphQlQuery {
         }
 
         return selection;
-      })
+      }),
     );
     return this;
   }

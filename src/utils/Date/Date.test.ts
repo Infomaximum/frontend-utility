@@ -132,9 +132,9 @@ describe("Тест файла Date", () => {
     "Тестирование функции getCollapsedDateRangeLabel(dateFrom = $dateFrom; dateTo = $dateTo; dateFormat = $dateFormat)",
     ({ dateFrom, dateTo, dateFormat, expected }) => {
       expect(getCollapsedDateRangeLabel(dateFrom, dateTo, dateFormat)).toBe(
-        expected
+        expected,
       );
-    }
+    },
   );
 
   it("Тестирование функции formatEnteredTime", () => {
@@ -182,7 +182,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getDateServerObject(moment = $moment)",
     ({ moment, expected }) => {
       expect(getDateServerObject(moment)).toStrictEqual(expected);
-    }
+    },
   );
 
   test.each`
@@ -193,7 +193,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getTimeServerObject(moment = $moment)",
     ({ moment, expected }) => {
       expect(getTimeServerObject(moment)).toStrictEqual(expected);
-    }
+    },
   );
 
   test.each`
@@ -204,7 +204,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции format(time = $time, format = $tFormat)",
     ({ time, tFormat, expected }) => {
       expect(format(time, tFormat)).toBe(expected);
-    }
+    },
   );
 
   it("Тестирование функции getFormattedDate(value: number)", () => {
@@ -221,7 +221,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции excelFormat(format = $format)",
     ({ format, expected }) => {
       expect(excelFormat(format)).toBe(expected);
-    }
+    },
   );
 
   it("Тестирование функции capitalizedShortFormat", () => {
@@ -238,7 +238,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getFormattedTime(time = $time; asHours = $asHours; seconds = $seconds)",
     ({ time, asHours, seconds, expected }) => {
       expect(getFormattedTime(time, asHours, seconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -249,7 +249,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getSignFormattedTime(time = $time)",
     ({ time, asHours, seconds, expected }) => {
       expect(getSignFormattedTime(time, asHours, seconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -260,7 +260,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getClockTime(milliseconds = $milliseconds)",
     ({ milliseconds, expected }) => {
       expect(getClockTime(milliseconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -271,7 +271,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getDateTimeClockTime(milliseconds = $milliseconds)",
     ({ milliseconds, expected }) => {
       expect(getDateTimeClockTime(milliseconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -286,7 +286,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getDurationTime(time = $time)",
     ({ time, Localization, expected }) => {
       expect(getDurationTime(time, Localization)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -297,7 +297,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getDayTime(milliseconds = $milliseconds)",
     ({ milliseconds, expected }) => {
       expect(getDayTime(milliseconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -308,7 +308,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции getDurationInHours(milliseconds = $milliseconds)",
     ({ milliseconds, expected }) => {
       expect(getDurationInHours(milliseconds)).toBe(expected);
-    }
+    },
   );
 
   it("Тестирование функции getUTCStartOfDay", () => {
@@ -332,7 +332,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции roundToMinutes(milliseconds = $milliseconds)",
     ({ milliseconds, expected }) => {
       expect(roundToMinutes(milliseconds)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -343,7 +343,7 @@ describe("Тест файла Date", () => {
     "Тестирование функции floorMillisecondsToHour(time = $time)",
     ({ time, expected }) => {
       expect(floorMillisecondsToHour(time)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -354,6 +354,6 @@ describe("Тест файла Date", () => {
     "Тестирование функции ceilMillisecondsToHour(time = $time)",
     ({ time, expected }) => {
       expect(ceilMillisecondsToHour(time)).toBe(expected);
-    }
+    },
   );
 });

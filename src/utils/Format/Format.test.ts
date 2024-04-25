@@ -17,7 +17,7 @@ describe("Тест файла Format", () => {
     "Тестирование функции formatNumber(number = $number, localization = $localization)",
     ({ number, localization, expected }) => {
       expect(formatNumber(number, localization)).toBe(expected);
-    }
+    },
   );
 
   test.each`
@@ -38,6 +38,6 @@ describe("Тест файла Format", () => {
     "Тестирование функции formatTime(milliseconds = $milliseconds, localization = $localization)",
     ({ milliseconds, localization, expected }) => {
       expect(formatTime(milliseconds, localization)).toBe(expected);
-    }
+    },
   );
 });

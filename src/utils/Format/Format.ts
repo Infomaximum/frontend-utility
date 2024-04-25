@@ -42,12 +42,12 @@ export function formatNumber(number: number, localization: Localization) {
   if (Math.round(absNumber / 1000) < 10000) {
     // Округление числа до тысяч
     return `${Math.round(number / 1000)}${localization.getLocalized(
-      THOUSAND_SHORT
+      THOUSAND_SHORT,
     )}`;
   }
   // Округление числа до миллионов
   return `${Math.round(number / 1000000)}${localization.getLocalized(
-    MILLION_SHORT
+    MILLION_SHORT,
   )}`;
 }
 
@@ -64,32 +64,32 @@ export function formatTime(milliseconds: number, localization: Localization) {
   ) {
     // если количество миллисекунд меньше 1 минуты, то возвращает время в формате 59сек
     return `${Math.round(
-      milliseconds / MillisecondsPerSecond
+      milliseconds / MillisecondsPerSecond,
     )} ${localization.getLocalized(SECONDS_SHORT)}`;
   }
   if (Math.round(milliseconds / MillisecondsPerMinute) < 10) {
     // если количество миллисекунд больше 1 минуты, но меньше 10 минут,
     // то возвращает время в формате 9 мин 59 сек
     const seconds = Math.round(
-      (milliseconds % MillisecondsPerMinute) / MillisecondsPerSecond
+      (milliseconds % MillisecondsPerMinute) / MillisecondsPerSecond,
     );
     const minutes = Math.floor(milliseconds / MillisecondsPerMinute);
     return `${minutes} ${localization.getLocalized(
-      MINUTES_SHORT
+      MINUTES_SHORT,
     )} ${seconds} ${localization.getLocalized(SECONDS_SHORT)}`;
   }
   if (Math.round(milliseconds / MillisecondsPerMinute) < MinutesPerHour) {
     // если количество миллисекунд больше 10 минут, но меньше 1 часа,
     // то возвращает время в формате 59 мин
     return `${Math.round(
-      milliseconds / MillisecondsPerMinute
+      milliseconds / MillisecondsPerMinute,
     )} ${localization.getLocalized(MINUTES_SHORT)}`;
   }
   if (Math.round(milliseconds / MillisecondsPerMinute) < 100 * MinutesPerHour) {
     // если количество миллисекунд больше 1 часа, но меньше 100 часов,
     // то возвращает время в формате 89 ч 59 мин
     const minutes = Math.round(
-      (milliseconds % MillisecondsPerHour) / MillisecondsPerMinute
+      (milliseconds % MillisecondsPerHour) / MillisecondsPerMinute,
     );
     const hours = Math.floor(milliseconds / MillisecondsPerHour);
     if (minutes === MinutesPerHour) {
@@ -99,7 +99,7 @@ export function formatTime(milliseconds: number, localization: Localization) {
       return `${hours} ${localization.getLocalized(HOURS_SHORT)}`;
     }
     return `${hours} ${localization.getLocalized(
-      HOURS_SHORT
+      HOURS_SHORT,
     )} ${minutes} ${localization.getLocalized(MINUTES_SHORT)}`;
   }
   if (Math.round(milliseconds / MillisecondsPerHour) >= 100) {
@@ -110,7 +110,7 @@ export function formatTime(milliseconds: number, localization: Localization) {
     // если количество миллисекунд больше 10 000 000 часов, то возвращает время в формате 890млн ч
     return `${formatNumber(
       Math.floor(milliseconds / MillisecondsPerHour),
-      localization
+      localization,
     )} ${localization.getLocalized(HOURS_SHORT)}`;
   }
   assertSimple(false, "Некорректное время!");

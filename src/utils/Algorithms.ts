@@ -4,7 +4,7 @@ function _runDfs(
   element: any,
   expandPredicate: any,
   whilePredicate: any,
-  pick: any
+  pick: any,
 ) {
   if (whilePredicate(element)) {
     let result = [pick(element)];
@@ -12,8 +12,8 @@ function _runDfs(
     frontier.forEach(
       (frontElement: any) =>
         (result = result.concat(
-          _runDfs(frontElement, expandPredicate, whilePredicate, pick)
-        ))
+          _runDfs(frontElement, expandPredicate, whilePredicate, pick),
+        )),
     );
     return result;
   }
@@ -24,7 +24,7 @@ export function runDfs(
   root: any,
   expandPredicate: any,
   whilePredicate: any,
-  pick: any
+  pick: any,
 ) {
   return _runDfs(root, expandPredicate, whilePredicate, pick);
 }

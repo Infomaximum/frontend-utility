@@ -35,7 +35,7 @@ describe("Тест файла Validators", () => {
     "Тестирование функции notEmptyMemoizeWithoutMessage(value = $value)",
     ({ value, expected }) => {
       expect(notEmptyMemoizeWithoutMessage(value, {})).toStrictEqual(expected);
-    }
+    },
   );
 
   test.each`
@@ -53,9 +53,9 @@ describe("Тест файла Validators", () => {
     "Тестирование функции notEmptyTimepickersWithoutMessage(value = $value)",
     ({ value, expected }) => {
       expect(notEmptyTimepickersWithoutMessage(value, {})).toStrictEqual(
-        expected
+        expected,
       );
-    }
+    },
   );
 
   it("Тестирование функции isValidTimepickersWithoutMessage", () => {
@@ -70,10 +70,10 @@ describe("Тест файла Validators", () => {
     };
 
     expect(isValidTimepickersWithoutMessage(timepickerData, {})).toStrictEqual(
-      undefined
+      undefined,
     );
     expect(
-      isValidTimepickersWithoutMessage(incorrectTimepickerData, {})
+      isValidTimepickersWithoutMessage(incorrectTimepickerData, {}),
     ).toStrictEqual(errObjForEmptyField);
   });
 

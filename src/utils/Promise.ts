@@ -63,7 +63,7 @@ export class Deferred implements IDeferred {
 
   public then<T = any>(
     onResolve: (param: any) => any,
-    onReject?: (e: any) => any
+    onReject?: (e: any) => any,
   ): IDeferred<T> {
     this.promise = this.promise.then(onResolve, onReject);
     return this;
@@ -105,7 +105,7 @@ export class PromiseSource implements IPromiseSource {
       }
       if (typeof resolver !== "function") {
         throw new Error(
-          `Promise resolver must be a function, but it's value is "${typeof resolver}"`
+          `Promise resolver must be a function, but it's value is "${typeof resolver}"`,
         );
       }
     }
@@ -128,7 +128,7 @@ export class PromiseSource implements IPromiseSource {
       if (onResolve) {
         if (typeof onResolve !== "function") {
           throw new Error(
-            `Then handler must be a function, but it's value is "${typeof onResolve}"`
+            `Then handler must be a function, but it's value is "${typeof onResolve}"`,
           );
         }
         this.resolve.push(onResolve);
@@ -136,7 +136,7 @@ export class PromiseSource implements IPromiseSource {
       if (onReject) {
         if (typeof onReject !== "function") {
           throw new Error(
-            `Catch handler must be a function, but it's value is "${typeof onReject}"`
+            `Catch handler must be a function, but it's value is "${typeof onReject}"`,
           );
         }
         this.reject.push(onReject);
@@ -164,7 +164,7 @@ export class PromiseSource implements IPromiseSource {
       }
       if (typeof mutation !== "function") {
         throw new Error(
-          `Mutation must be a function, but it's value is "${typeof mutation}"`
+          `Mutation must be a function, but it's value is "${typeof mutation}"`,
         );
       }
     }
@@ -185,7 +185,7 @@ export class PromiseSource implements IPromiseSource {
       }
       if (typeof onReject !== "function") {
         throw new Error(
-          `Catch handler must be a function, but it's value is "${typeof onReject}"`
+          `Catch handler must be a function, but it's value is "${typeof onReject}"`,
         );
       }
     }
