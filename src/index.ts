@@ -9,8 +9,7 @@ import {
   GraphQlQuery,
   enumValue,
   EnumValue,
-  type gql,
-} from "./utils/graphqlQueryBuilder";
+} from "@saneksa/graphql-query-builder";
 import type { TPropInjector } from "./utils/types/PropInjector";
 import { cookies } from "./utils/Auth/Auth";
 import type {
@@ -59,7 +58,6 @@ export {
 };
 
 export type {
-  gql,
   TPromiseControls,
   IDeferred,
   TFeatureChecker,

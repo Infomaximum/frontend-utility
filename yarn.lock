@@ -1506,6 +1506,11 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.16.4.tgz#c09ad9a132ccb5a67c4f211d909323ab1294f95f"
   integrity sha512-YunpoOAyGLDseanENHmbFvQSfVL5BxW3k7hhy0eN4rb3gS/ct75dVD0EXOWIqFT/nE8XYW6LP6vz6ctKRi0k9A==
 
+"@saneksa/graphql-query-builder@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@saneksa/graphql-query-builder/-/graphql-query-builder-3.1.0.tgz#c7aae0c31f1fe8db29d33e5ed4572bada07892df"
+  integrity sha512-5+UHvzKMTkCO70Px803ubmipEj7xPVN0EyCl45UfDmozhQv2eA0jFSMAihdldbmr+HR0YenB44KAiyFYamdw3Q==
+
 "@sinclair/typebox@^0.25.16":
   version "0.25.24"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"

@@ -4,7 +4,7 @@ import isUndefined from "lodash/isUndefined";
 import forEach from "lodash/forEach";
 import { type DocumentNode, parse } from "graphql/language";
 import { assertSimple } from "@infomaximum/assert";
-import { GraphQlQuery } from "../utils/graphqlQueryBuilder";
+import { GraphQlQuery } from "@saneksa/graphql-query-builder";
 
 type TFormData<T> = { initial: T[]; current: T[] };
 
@@ -109,7 +109,7 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
     queryPath: string[],
     createMutations: GraphQlQuery[],
     updateMutations: GraphQlQuery[],
-    removeMutations: GraphQlQuery[],
+    removeMutations: GraphQlQuery[]
   ): string {
     const sizeOfNesting = queryPath.length - 1;
 
@@ -122,7 +122,7 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
         .withoutBody()
         .join(...removeMutations)
         .join(...createMutations)
-        .join(...updateMutations),
+        .join(...updateMutations)
     );
 
     for (let i = sizeOfNesting - 1; i >= 0; i--) {
@@ -189,8 +189,8 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
         mutationPath,
         createMutations.filter(Boolean),
         updateMutations.filter(Boolean),
-        removeMutations.filter(Boolean),
-      )}`,
+        removeMutations.filter(Boolean)
+      )}`
     );
   }
 }
