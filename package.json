@@ -14,7 +14,7 @@
     "@infomaximum/assert": "^1.0.0",
     "@infomaximum/graphql-model": "^1.2.0",
     "@infomaximum/localization": "^1.0.1",
-    "@saneksa/graphql-query-builder": "^3.1.0",
+    "@saneksa/graphql-query-builder": "^3.1.1",
     "@types/hoist-non-react-statics": "^3.3.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.10",
