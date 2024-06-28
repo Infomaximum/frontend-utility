@@ -109,7 +109,7 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
     queryPath: string[],
     createMutations: GraphQlQuery[],
     updateMutations: GraphQlQuery[],
-    removeMutations: GraphQlQuery[]
+    removeMutations: GraphQlQuery[],
   ): string {
     const sizeOfNesting = queryPath.length - 1;
 
@@ -122,7 +122,7 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
         .withoutBody()
         .join(...removeMutations)
         .join(...createMutations)
-        .join(...updateMutations)
+        .join(...updateMutations),
     );
 
     for (let i = sizeOfNesting - 1; i >= 0; i--) {
@@ -189,8 +189,8 @@ export class TaskManager<T extends { id?: number; [key: string]: any }> {
         mutationPath,
         createMutations.filter(Boolean),
         updateMutations.filter(Boolean),
-        removeMutations.filter(Boolean)
-      )}`
+        removeMutations.filter(Boolean),
+      )}`,
     );
   }
 }
