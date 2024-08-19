@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.0](https://github.com/Infomaximum/frontend-utility/compare/v8.0.2...v8.1.0) (2024-08-19)
+
+
+### Features
+
+* добавлена возможность хокам принимать несколько аргументов ([f07fae6](https://github.com/Infomaximum/frontend-utility/commit/f07fae64264459fb3d1acdbb236540cbe0c00e52))
+
 ### [8.0.2](https://github.com/Infomaximum/frontend-utility/compare/v8.0.1...v8.0.2) (2024-06-28)
 
 ### [8.0.1](https://github.com/Infomaximum/frontend-utility/compare/v8.0.0...v8.0.1) (2024-06-28)
