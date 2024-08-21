@@ -1080,9 +1080,9 @@
   integrity sha512-PQJQ4noG8f8BeQ8ijJBpArDtB4xCU0HuECpmkgMFu3i0UnfJrO33T91lWTJ+uB82s7Ikj5S3qNrRLTdRvHfZLw==
 
 "@infomaximum/graphql-model@^1.2.0":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@infomaximum/graphql-model/-/graphql-model-1.4.2.tgz#72558c185bb04336f8a2a2c2ce9c254cd8adb053"
-  integrity sha512-NdPtye8hDA1f/UZnxnQOrGvF61D8fvT1666TVDgTcKCAFi3K2K++2ygcVFABrrWkbywbEn2ut8LeoqvTHRmOdw==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@infomaximum/graphql-model/-/graphql-model-1.5.0.tgz#bb2f141e5ce50e7c094591483c7f762ff0efa7bf"
+  integrity sha512-PuMWvPyZJ7BdG+0YdL/aGZZUmpdsASdBPKpUk+QQfU2RzewO+NvZeYrAPXJfq6rLwFYsryi2fpaXppKff20XqQ==
   dependencies:
     "@infomaximum/assert" "^1.0.0"
     lodash.get "^4.4.2"
