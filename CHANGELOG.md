@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.1.1](https://github.com/Infomaximum/frontend-utility/compare/v8.1.0...v8.1.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* некоторые библиотеки перенесены в peerDependencies ([db1716d](https://github.com/Infomaximum/frontend-utility/commit/db1716dd6f63427cc17b4155116662db50e2d875))
+
 ## [8.1.0](https://github.com/Infomaximum/frontend-utility/compare/v8.0.2...v8.1.0) (2024-08-19)
 
 
