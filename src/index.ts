@@ -11,7 +11,6 @@ import {
   EnumValue,
 } from "@saneksa/graphql-query-builder";
 import type { TPropInjector } from "./utils/types/PropInjector";
-import { cookies } from "./utils/Auth/Auth";
 import type {
   TFeatureChecker,
   TFeatureCacheKeyCreator,
@@ -47,7 +46,6 @@ export {
   promised,
   deferred,
   enumValue,
-  cookies,
   Feature,
   userAgent,
   EnumValue,

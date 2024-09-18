@@ -23,8 +23,7 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.10",
     "graphql": "^16.3.0",
-    "graphql-tag": "^2.12.6",
-    "universal-cookie": "^4.0.4"
+    "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
