@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/Infomaximum/frontend-utility/compare/v8.1.1...v9.0.0) (2024-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* удалена константа по работе с куками
+
+### Features
+
+* удалена константа по работе с куками ([75af5ad](https://github.com/Infomaximum/frontend-utility/commit/75af5ad440fc8e45302e543f2022204a40e37c95))
+
 ### [8.1.1](https://github.com/Infomaximum/frontend-utility/compare/v8.1.0...v8.1.1) (2024-08-27)
 
 
