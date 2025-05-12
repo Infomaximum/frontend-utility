@@ -61,11 +61,13 @@
     "typescript": "5.4.5"
   },
   "scripts": {
-    "release": "tsc --noEmit && standard-version && rollup -c",
+    "release": "standard-version",
+    "prerelease": "standard-version -p",
     "build": "rollup -c",
     "test": "cross-env NODE_ENV=test jest --passWithNoTests",
     "lint": "tsc --noEmit",
-    "prettier": "prettier --find-config-path --write ./src"
+    "prettier": "prettier --find-config-path --write ./src",
+    "prepublish": "yarn build"
   },
   "jira-prepare-commit-msg": {
     "messagePattern": "$M\n[$J]"
