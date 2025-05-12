@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.1.0-0](https://github.com/Infomaximum/frontend-utility/compare/v9.0.0...v9.1.0-0) (2025-05-12)
+
+
+### Features
+
+* добавлен importAll ([dd3783f](https://github.com/Infomaximum/frontend-utility/commit/dd3783ff9d8e481877b37b2007cf3c7cfacfc057))
+
 ## [9.0.0](https://github.com/Infomaximum/frontend-utility/compare/v8.1.1...v9.0.0) (2024-09-18)
 
 
