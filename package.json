@@ -62,7 +62,7 @@
   },
   "scripts": {
     "release": "standard-version",
-    "prerelease": "standard-version -p",
+    "release:rc": "standard-version -p",
     "build": "rollup -c",
     "test": "cross-env NODE_ENV=test jest --passWithNoTests",
     "lint": "tsc --noEmit",
