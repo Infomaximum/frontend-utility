@@ -11,9 +11,6 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@infomaximum/assert": "*",
-    "@infomaximum/graphql-model": "*",
-    "@infomaximum/localization": "*",
     "@saneksa/graphql-query-builder": "^3.1.1",
     "@types/hoist-non-react-statics": "^3.3.1"
   },
@@ -23,7 +20,10 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.10",
     "graphql": "^16.3.0",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "@infomaximum/graphql-model": "*",
+    "@infomaximum/localization": "*",
+    "@infomaximum/assert": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -31,6 +31,9 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "@infomaximum/config": "^2.6.0",
+    "@infomaximum/graphql-model": "*",
+    "@infomaximum/localization": "*",
+    "@infomaximum/assert": "*",
     "@optimize-lodash/rollup-plugin": "4.0.4",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
