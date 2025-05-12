@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.1.0](https://github.com/Infomaximum/frontend-utility/compare/v9.1.0-0...v9.1.0) (2025-05-12)
+
 ## [9.1.0-0](https://github.com/Infomaximum/frontend-utility/compare/v9.0.0...v9.1.0-0) (2025-05-12)
 
 
