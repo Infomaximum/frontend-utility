@@ -1,10 +1,6 @@
 import type { TPromiseControls, IDeferred } from "./utils/Promise";
 import { Deferred, promised, deferred } from "./utils/Promise";
-import {
-  requireAllUnique,
-  requireAll,
-  requireAllModels,
-} from "./utils/Resolve";
+import { requireAll, requireAllModels, importAll } from "./utils/Resolve";
 import {
   GraphQlQuery,
   enumValue,
@@ -39,9 +35,9 @@ export * from "./utils/Validators/Validators";
 export {
   ErrorHandling,
   Deferred,
-  requireAllUnique,
   requireAll,
   requireAllModels,
+  importAll,
   GraphQlQuery,
   promised,
   deferred,

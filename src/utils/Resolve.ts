@@ -1,6 +1,5 @@
 import forEach from "lodash/forEach";
 import get from "lodash/get";
-import mapKeys from "lodash/mapKeys";
 import merge from "lodash/merge";
 import reduce from "lodash/reduce";
 import { Model } from "@infomaximum/graphql-model";
@@ -12,7 +11,7 @@ import { Model } from "@infomaximum/graphql-model";
  * экспортируется именованным экспортом и по умолчанию, то эта модель в массив попадет только один раз
  */
 export const requireAllModels = (
-  requireContext: __WebpackModuleApi.RequireContext,
+  requireContext: __WebpackModuleApi.RequireContext
 ) => {
   const models = reduce(
     requireContext.keys().map(requireContext),
@@ -25,7 +24,7 @@ export const requireAllModels = (
 
       return acc;
     },
-    new Set<typeof Model>(),
+    new Set<typeof Model>()
   );
 
   return Array.from(models.values());
@@ -44,42 +43,18 @@ export const requireAllModels = (
  */
 export const requireAll = (
   requireContext: __WebpackModuleApi.RequireContext,
-  path?: string,
+  path?: string
 ) => {
   return reduce(
     requireContext.keys().map(requireContext),
     (acc, exports) => merge(acc, getExportValues(exports, path)),
-    {},
+    {}
   );
 };
 
-let requireUniqueId = 0;
-
-/**
- * Аналогичен {@link requireAll}, за исключением того, что добавляется гарантия, что экспортируемые из разных
- * файлов module.exports не затрут значения друг у друга при мердже. Особенно полезно с логиками, т.к.
- * имена у них могут совпадать в разных файлах.
- * @param {Object} requireContext
- * @param {string} path
- * @returns {*}
- */
-export const requireAllUnique = (
-  requireContext: __WebpackModuleApi.RequireContext,
-  path?: string,
-) => {
-  return reduce(
-    requireContext.keys().map(requireContext),
-    (acc, exports) =>
-      merge(
-        acc,
-        mapKeys(getExportValues(exports, path), (value, key) => {
-          requireUniqueId += 1;
-          return `${key}?${requireUniqueId}`;
-        }),
-      ),
-    {},
-  );
-};
+export function importAll(r: __WebpackModuleApi.RequireContext) {
+  r.keys().forEach(r);
+}
 
 function getExportValues(exports: any, path?: string) {
   let exportValues;
