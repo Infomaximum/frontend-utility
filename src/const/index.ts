@@ -10,6 +10,7 @@ export const NetworkFailResendAttemptsCount = ResendDelays.length;
 export const FormCancelSymbol = Symbol("form_cancel");
 
 export const XTraceIdHeaderKey = "X-Trace-Id";
+export const XRequestIdHeaderKey = "X-Request-Id";
 
 export enum EHttpCodes {
   ERROR = 0,
