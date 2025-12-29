@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.2.0](https://github.com/Infomaximum/frontend-utility/compare/v9.1.2...v9.2.0) (2025-12-29)
+
+
+### Features
+
+* добавлена константа с X-Request-Id ([280b467](https://github.com/Infomaximum/frontend-utility/commit/280b467b4101f19ad9444e706f2e1f9f59a040a2))
+
 ### [9.1.2](https://github.com/Infomaximum/frontend-utility/compare/v9.1.1...v9.1.2) (2025-05-12)
 
 ### [9.1.1](https://github.com/Infomaximum/frontend-utility/compare/v9.1.0...v9.1.1) (2025-05-12)
