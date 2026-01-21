@@ -12,18 +12,16 @@
   ],
   "dependencies": {
     "@saneksa/graphql-query-builder": "^3.1.1",
-    "@types/hoist-non-react-statics": "^3.3.1"
-  },
-  "peerDependencies": {
+    "@types/hoist-non-react-statics": "^3.3.1",
     "lodash": "^4.17.21",
     "reselect": "4.0.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.10",
     "graphql": "^16.3.0",
     "graphql-tag": "^2.12.6",
-    "@infomaximum/graphql-model": "*",
-    "@infomaximum/localization": "*",
-    "@infomaximum/assert": "*"
+    "@infomaximum/graphql-model": "^1.6.0",
+    "@infomaximum/localization": "^1.1.0",
+    "@infomaximum/assert": "^1.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -31,9 +29,6 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "@infomaximum/config": "^2.6.0",
-    "@infomaximum/graphql-model": "*",
-    "@infomaximum/localization": "*",
-    "@infomaximum/assert": "*",
     "@optimize-lodash/rollup-plugin": "4.0.4",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
@@ -42,10 +37,6 @@
     "@types/jest": "^29.5.12",
     "@types/lodash": "4.14.182",
     "@types/webpack-env": "1.18.0",
-    "crypto-js": "^4.1.1",
-    "dayjs": "^1.11.10",
-    "graphql": "^16.3.0",
-    "graphql-tag": "^2.12.6",
     "universal-cookie": "^4.0.4",
     "babel-jest": "^29.7.0",
     "cross-env": "^7.0.3",
@@ -55,9 +46,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-jsdom-global": "^4.0.0",
     "jira-prepare-commit-msg": "1.7.2",
-    "lodash": "^4.17.21",
     "prettier": "3.2.5",
-    "reselect": "4.0.0",
     "rollup": "4.16.4",
     "standard-version": "9.5.0",
     "tslib": "^2.6.2",

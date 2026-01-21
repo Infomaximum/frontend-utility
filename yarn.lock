@@ -1069,7 +1069,7 @@
   resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.2.tgz#98c23c950a3d9b6c8f0daed06da6c3af06981340"
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
-"@infomaximum/assert@*", "@infomaximum/assert@^1.0.0":
+"@infomaximum/assert@^1.0.0", "@infomaximum/assert@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@infomaximum/assert/-/assert-1.1.3.tgz#b4eb30914b7a27dbee51171733a3ffd4ada931f8"
   integrity sha512-dxMNhHZjGV0ylOU772tWkZ4fH+O+bLUA8xt6BgxOGMTC01VvUeOnCzgnChtAyifF/Bi9T+cISdwvJwf0jfLDLw==
@@ -1079,18 +1079,18 @@
   resolved "https://registry.yarnpkg.com/@infomaximum/config/-/config-2.6.0.tgz#566310991a2e4e59cdd444a24fa9f69d7396ce83"
   integrity sha512-PQJQ4noG8f8BeQ8ijJBpArDtB4xCU0HuECpmkgMFu3i0UnfJrO33T91lWTJ+uB82s7Ikj5S3qNrRLTdRvHfZLw==
 
-"@infomaximum/graphql-model@*":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@infomaximum/graphql-model/-/graphql-model-1.5.0.tgz#bb2f141e5ce50e7c094591483c7f762ff0efa7bf"
-  integrity sha512-PuMWvPyZJ7BdG+0YdL/aGZZUmpdsASdBPKpUk+QQfU2RzewO+NvZeYrAPXJfq6rLwFYsryi2fpaXppKff20XqQ==
+"@infomaximum/graphql-model@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@infomaximum/graphql-model/-/graphql-model-1.6.0.tgz#843151f42571789fe0b562a266cf3d1e8d17a20b"
+  integrity sha512-1w3a6VVDf2TlvjU982nU4Z6tIr29Hi33FwNSoVwziBeTYuKsGa8+opRdT7tpJxMuSBAsVY7fDYBcadO4yFKtaQ==
   dependencies:
     "@infomaximum/assert" "^1.0.0"
     lodash.get "^4.4.2"
 
-"@infomaximum/localization@*":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@infomaximum/localization/-/localization-1.0.5.tgz#0acc2035742aea19e5b569bf253af666dfc47486"
-  integrity sha512-bRW9gA6/+cI+nHRD+Dc2szOULNm81grB4V6be0yvnXcA9zGNJhfNindMOqJ3RMQO0Ab4PDW9HLzwPag+qORH1Q==
+"@infomaximum/localization@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@infomaximum/localization/-/localization-1.1.0.tgz#d6134cbd984c59a344a0481223277eab04d6c3c0"
+  integrity sha512-f8oPlKJdvOKcBm70/Yj7DV4KtSULnx16tRlGoGZdr75x9gxgbspYigeMZGa+cv5y3MKqIcClRR4xxisO7h1Qwg==
   dependencies:
     "@infomaximum/assert" "^1.0.0"
 
