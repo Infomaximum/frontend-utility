@@ -11,8 +11,8 @@ export const FormCancelSymbol = Symbol("form_cancel");
 
 export const XTraceIdHeaderKey = "X-Trace-Id";
 export const XRequestIdHeaderKey = "X-Request-Id";
-export const IdempotencyKeyHeader = "Idempotency-Key";
-export const XRetryCount = "X-Retry-Count";
+export const IdempotencyKeyHeaderKey = "Idempotency-Key";
+export const XRetryCountHeaderKey = "X-Retry-Count";
 
 export enum EHttpCodes {
   ERROR = 0,
