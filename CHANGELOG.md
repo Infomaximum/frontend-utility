@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.3.1](https://github.com/Infomaximum/frontend-utility/compare/v9.3.0...v9.3.1) (2026-05-26)
+
+
+### Bug Fixes
+
+* исправлены названия констант для заголовков Idempotency и Retry Count ([fc1ca68](https://github.com/Infomaximum/frontend-utility/commit/fc1ca687ef7be8a8e246bb16d860321b96fccba6))
+
 ## [9.3.0](https://github.com/Infomaximum/frontend-utility/compare/v9.2.2...v9.3.0) (2026-05-26)
 
 
